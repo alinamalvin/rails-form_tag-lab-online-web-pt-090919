@@ -9,17 +9,11 @@ class StudentsController < ApplicationController
   end
   
   def new
+    @student = Student.new(params[:id])
   end
-
+  
   def create
-    session[:form_params] = params.inspect
-    redirect_to new_student_path
+    @student = Student.save(params[:id])
   end
-
-  private
-
-    def set_student
-      @student = Student.find(params[:id])
-    end
 
 end
